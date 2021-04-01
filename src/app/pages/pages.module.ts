@@ -6,7 +6,6 @@ import { PortafolioComponent } from './portafolio/portafolio.component';
 import { AboutComponent } from './about/about.component';
 import { ItemComponent } from './item/item.component';
 
-
 @NgModule({
   declarations: [
   	PortafolioComponent,

@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { InfoPaginaService } from '../../services/info-pagina.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent { 
 
-  constructor() { }
+	titulo: string = '';
+
+  constructor(private _servicio: InfoPaginaService) { }
 
   ngOnInit(): void {
+  	this._servicio.getInfo()
+      .subscribe(resp => {
+        
+        this.titulo = resp.titulo || '';
+
+      });
   }
 
 }
