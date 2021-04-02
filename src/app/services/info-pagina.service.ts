@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { InfoPagina, InfoEquipo } from '../interfaces/interfaces';
 
@@ -18,7 +17,7 @@ export class InfoPaginaService {
   	this.cargarEquipo();
   }
 
-  cargarInfo()  {
+  private cargarInfo()  {
     this.http.get<InfoPagina>('assets/data/data-pagina.json')
     	.subscribe(resp => {
     		this.cargando = false;
@@ -26,7 +25,7 @@ export class InfoPaginaService {
   		});
   }
 
-  cargarEquipo() {
+  private cargarEquipo() {
     this.http.get<InfoEquipo[]>('https://angular-html-c93df-default-rtdb.firebaseio.com/equipo.json')
     	.subscribe(resp => {
     		this.cargando = false;

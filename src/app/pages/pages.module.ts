@@ -6,12 +6,14 @@ import { PortafolioComponent } from './portafolio/portafolio.component';
 import { AboutComponent } from './about/about.component';
 import { ItemComponent } from './item/item.component';
 import { ComponentsModule } from '../components/components.module';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
   	PortafolioComponent,
   	AboutComponent,
-  	ItemComponent
+  	ItemComponent,
+  	SearchComponent
   ],
   imports: [
     CommonModule,

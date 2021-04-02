@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PortafolioComponent } from './portafolio/portafolio.component';
 import { AboutComponent } from './about/about.component';
 import { ItemComponent } from './item/item.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
 	{
@@ -11,7 +12,8 @@ const routes: Routes = [
 		children: [
 			{ path: 'home', component: PortafolioComponent },
 			{ path: 'about', component: AboutComponent },
-			{ path: 'item', component: ItemComponent },
+			{ path: 'item/:id', component: ItemComponent },
+			{ path: 'search/:termino', component: SearchComponent },
 			{ path: '**', redirectTo: 'home' }
 		]
 	}
