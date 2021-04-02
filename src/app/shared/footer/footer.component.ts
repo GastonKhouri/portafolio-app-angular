@@ -10,16 +10,12 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
 })
 export class FooterComponent implements OnInit {
 
-	info!: InfoPagina;
 	year: number = new Date().getFullYear();
 
-  constructor(private _servicio: InfoPaginaService) { }
+  constructor(public ips: InfoPaginaService) { }
 
   ngOnInit(): void {
-  	this._servicio.cargarInfo()
-  		.subscribe(resp => {
-  			this.info = resp;
-  		});
   }
+
 
 }

@@ -12,13 +12,9 @@ export class AboutComponent implements OnInit {
 
 	equipo!: InfoEquipo[];
 
-  constructor(private _servicio: InfoPaginaService) { }
+  constructor(public ips: InfoPaginaService) { }
 
   ngOnInit(): void {
-  	this._servicio.cargarEquipo()
-  		.subscribe(resp => {
-  			this.equipo = resp;
-  		});
   }
 
 }

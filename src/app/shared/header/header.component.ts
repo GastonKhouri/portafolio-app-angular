@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { InfoPagina } from '../../interfaces/interfaces';
 import { InfoPaginaService } from '../../services/info-pagina.service';
@@ -8,17 +8,11 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent { 
+export class HeaderComponent implements OnInit { 
 
-	info!: InfoPagina;
-
-  constructor(private _servicio: InfoPaginaService) { }
+  constructor(public ips: InfoPaginaService) { }
 
   ngOnInit(): void {
-  	this._servicio.cargarInfo()
-  		.subscribe(resp => {
-  			this.info = resp;
-  		});
   }
 
 }

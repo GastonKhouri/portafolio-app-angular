@@ -9,14 +9,29 @@ import { InfoPagina, InfoEquipo } from '../interfaces/interfaces';
 })
 export class InfoPaginaService {
 
-  constructor(private http: HttpClient) { }
+	info!: InfoPagina;
+	equipo!: InfoEquipo[];
+	cargando: boolean = true;
 
-  cargarInfo(): Observable<InfoPagina>  {
-    return this.http.get<InfoPagina>('assets/data/data-pagina.json');
+  constructor(private http: HttpClient) {
+  	this.cargarInfo();
+  	this.cargarEquipo();
   }
 
-  cargarEquipo(): Observable<InfoEquipo[]> {
-    return this.http.get<InfoEquipo[]>('https://angular-html-c93df-default-rtdb.firebaseio.com/equipo.json');
+  cargarInfo()  {
+    this.http.get<InfoPagina>('assets/data/data-pagina.json')
+    	.subscribe(resp => {
+    		this.cargando = false;
+  			this.info = resp;
+  		});
+  }
+
+  cargarEquipo() {
+    this.http.get<InfoEquipo[]>('https://angular-html-c93df-default-rtdb.firebaseio.com/equipo.json')
+    	.subscribe(resp => {
+    		this.cargando = false;
+  			this.equipo = resp;
+  		});
   }
 
 
