@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { InfoPagina } from '../../interfaces/interfaces';
 import { InfoPaginaService } from '../../services/info-pagina.service';
 
 @Component({
@@ -9,17 +10,15 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
 })
 export class HeaderComponent { 
 
-	titulo: string = '';
+	info!: InfoPagina;
 
   constructor(private _servicio: InfoPaginaService) { }
 
   ngOnInit(): void {
-  	this._servicio.getInfo()
-      .subscribe(resp => {
-        
-        this.titulo = resp.titulo || '';
-
-      });
+  	this._servicio.cargarInfo()
+  		.subscribe(resp => {
+  			this.info = resp;
+  		});
   }
 
 }

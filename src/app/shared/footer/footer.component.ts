@@ -11,20 +11,15 @@ import { InfoPaginaService } from '../../services/info-pagina.service';
 export class FooterComponent implements OnInit {
 
 	info!: InfoPagina;
-	cargado: boolean = false;	
-
 	year: number = new Date().getFullYear();
 
   constructor(private _servicio: InfoPaginaService) { }
 
   ngOnInit(): void {
-  	this._servicio.getInfo()
-      .subscribe(resp => {
-        
-        this.info = resp;
-        this.cargado = true;
-
-      });
+  	this._servicio.cargarInfo()
+  		.subscribe(resp => {
+  			this.info = resp;
+  		});
   }
 
 }
